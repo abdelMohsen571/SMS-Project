@@ -13,6 +13,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'data/sequence.xml'
     ],
     'external_dependencies': {

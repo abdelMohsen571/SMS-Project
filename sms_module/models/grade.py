@@ -10,4 +10,4 @@ class StudentGrade(models.Model):
     name = fields.Char(string='Grade', required=True, tracking=True)
     date = fields.Date(string="Date", required=False, )
     student_id = fields.Many2one(comodel_name="sms.student", string="Student", required=False, )
-    course_id = fields.Many2one(comodel_name="sms.course", string="Course", required=False, )
+    course_id    = fields.Many2one(comodel_name="sms.course", string="Course", required=False, )
