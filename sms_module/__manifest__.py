@@ -12,15 +12,17 @@
         'base','mail'
     ],
     'data': [
-        'security/ir.model.access.csv',
         'security/security.xml',
-        'data/sequence.xml'
+        'security/ir.model.access.csv',
+        'data/sequence.xml',
+
     ],
-    'external_dependencies': {
+    'external_dependencies': {  
         'python': [],
         'bin': [],
     },
     'application': False,
     'installable': True,
     'license': 'LGPL-3',
+    'sequence':-9999
 }

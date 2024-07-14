@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="group_admin" model="res.groups">
-            <field name="name">Admin</field>
+        <record model="ir.module.category" id="sms_category">
+            <field name="name">SMS</field>
+            <field name="description">SMS Category Group</field>
+            <field name="sequence">10</field>
         </record>
-
         <record id="group_register" model="res.groups">
             <field name="name">Register</field>
+            <field name="category_id" ref="sms_module.sms_category"/>
         </record>
 
         <record id="group_teacher" model="res.groups">
             <field name="name">Teacher</field>
+            <field name="category_id" ref="sms_module.sms_category"/>
         </record>
 
         <record id="group_student" model="res.groups">
             <field name="name">Student</field>
+            <field name="category_id" ref="sms_module.sms_category"/>
         </record>
 
         <record id="group_guardian" model="res.groups">
             <field name="name">Guardian</field>
+            <field name="category_id" ref="sms_module.sms_category"/>
         </record>
 
         <record id="group_readonly" model="res.groups">
             <field name="name">Readonly</field>
+            <field name="category_id" ref="sms_module.sms_category"/>
         </record>
 
     </data>
