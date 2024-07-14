@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--TODO[IMP]: sms_student_view_form-->
+        <record id="sms_student_view_form" model="ir.ui.view">
+            <field name="name">sms_module.student.form</field>
+            <field name="model">sms_module.student</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="student_id" nolabel="1" placeholder="Student ID..."/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="date_of_birth"/>
+                                <field name="contact_details"/>
+                            </group>
+                            <group>
+                                <field name="address"/>
+                                <field name="guardian_details"/>
+                            </group>
+                        </group>
+                        '
+                        <notebook>
+                            <page string="Enrollments" name="enrollments">
+                                <field name="enrollments_ids"/>
+                            </page>
+                            <page string="grades_ids" name="grades_ids">
+                                <field name="grades_ids"/>
+                            </page>
+                            <page string="Attendance" name="attendance">
+                                <field name="attendance_ids"/>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!--TODO[IMP]: sms_student_view_tree-->
+        <record id="sms_student_view_tree" model="ir.ui.view">
+            <field name="name">sms_module.student.tree</field>
+            <field name="model">sms_module.student</field>
+            <field name="arch" type="xml">
+                <tree string="Students">
+                    <field name="student_id"/>
+                    <field name="name"/>
+                    <field name="date_of_birth"/>
+                    <field name="contact_details"/>
+                    <field name="address"/>
+                    <field name="guardian_details"/>
+                </tree>
+            </field>
+        </record>
+        <!--TODO[IMP]: sms_student_view_search-->
+        <record id="view_hospital_patiant_search" model="ir.ui.view">
+            <field name="name">sms_module.student.tree</field>
+            <field name='model'>sms_module.student</field>
+            <field name='arch' type="xml">
+                <search>
+                    <field name="name" filter_domain="['|',('name','ilike','self'),('date_of_birth','ilike','self') ]"/>
+                    <field name="date_of_birth"/>
+                    <field name="student_id"/>
+                </search>
+            </field>
+        </record>
+        <!--TODO[IMP]: sms_student_actions-->
+        <record id="sms_student_action" model="ir.actions.act_window">
+            <field name="name">Students</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sms_module.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Add a Student..
+                </p>
+            </field>
+        </record>
+            <menuitem id="student_menu" name="Students" parent="sms_module.student_categ"
+              action="sms_module.sms_student_action" sequence="1"/>
+    </data>
+</odoo>

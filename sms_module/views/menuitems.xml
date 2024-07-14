@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Top Menu with Icon -->
+    <menuitem
+            name="SMS"
+            id="sms_root_menu"
+            sequence="-100"
+            web_icon="sms_module,static/description/icon.png"
+    />
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="student_categ" name="Student" sequence="1" parent="sms_root_menu"/>
+    <menuitem id="courses_categ" name="Courses" sequence="1" parent="sms_root_menu"/>
+    <menuitem id="enrollment_categ" name="Enrollments" sequence="1" parent="sms_root_menu"/>
+    <menuitem id="grades_categ" name="Grades" sequence="1" parent="sms_root_menu"/>
+    <menuitem id="attendance_categ" name="Attendance" sequence="1" parent="sms_root_menu"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+
+
+
+
+
+</odoo>
+

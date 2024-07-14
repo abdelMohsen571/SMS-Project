@@ -15,6 +15,12 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'data/sequence.xml',
+        'views/menuitems.xml',
+        'views/student_views.xml',
+        'views/course_views.xml',
+        'views/enrollment_views.xml',
+        'views/grade_views.xml',
+        'views/attendance_views.xml',
 
     ],
     'external_dependencies': {  

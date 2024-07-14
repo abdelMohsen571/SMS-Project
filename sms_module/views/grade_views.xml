@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--TODO[IMP]: sms_grade_view_form-->
+        <record id="sms_grade_view_form" model="ir.ui.view">
+            <field name="name">sms_module.grade.form</field>
+            <field name="model">sms_module.grade</field>
+            <field name="arch" type="xml">
+                <form string="Grade">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" nolabel="1" placeholder="grade ID..."/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="date"/>
+                                <field name="student_id"/>
+                            </group>
+                            <group>
+                                <field name="course_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!--TODO[IMP]: sms_grade_view_tree-->
+        <record id="sms_grade_view_tree" model="ir.ui.view">
+            <field name="name">sms_module.grade.tree</field>
+            <field name="model">sms_module.grade</field>
+            <field name="arch" type="xml">
+                <tree string="Grades">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="student_id"/>
+                    <field name="course_id"/>
+                </tree>
+            </field>
+        </record>
+        <!--TODO[IMP]: sms_grade_view_search-->
+        <record id="sms_grade_view_search" model="ir.ui.view">
+            <field name="name">sms_module.grade.tree</field>
+            <field name='model'>sms_module.grade</field>
+            <field name='arch' type="xml">
+                <search>
+                    <field name="name" filter_domain="[('name','ilike','self') ]"/>
+                    <field name="date"/>
+                </search>
+            </field>
+        </record>
+                <!--TODO[IMP]: sms_grade_action-->
+        <record id="sms_grade_action" model="ir.actions.act_window">
+            <field name="name">Grades</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sms_module.grade</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Add a grade..
+                </p>
+            </field>
+        </record>
+        <menuitem id="grades_menu" name="Grades" parent="sms_module.grades_categ"
+              action="sms_module.sms_grade_action" sequence="6"/>
+    </data>
+</odoo>
