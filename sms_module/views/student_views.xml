@@ -23,6 +23,10 @@
                             <group>
                                 <field name="address"/>
                                 <field name="guardian_details"/>
+                                <field name="student_level"/>
+<!--                                <field name="preferred_course_id" domain="[('course_level','=',student_level)]"/>-->
+                                <field name="preferred_course_domin"/>
+                                <field name="preferred_course_id" domain="preferred_course_domin"/>
                             </group>
                         </group>
                         '

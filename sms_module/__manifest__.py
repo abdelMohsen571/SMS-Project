@@ -21,6 +21,7 @@
         'views/enrollment_views.xml',
         'views/grade_views.xml',
         'views/attendance_views.xml',
+        'wizard/student_enrollment_wizard_view.xml',
 
     ],
     'external_dependencies': {  

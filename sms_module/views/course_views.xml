@@ -22,6 +22,7 @@
                             <group>
                                 <field name="duration"/>
                                 <field name="prerequisites"/>
+                                <field name="course_level"/>
                             </group>
                         </group>
                         '

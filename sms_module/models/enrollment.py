@@ -16,5 +16,6 @@ class StudentEnrollment(models.Model):
     student_id = fields.Many2one(comodel_name="sms_module.student", string="Student", required=False, )
     course_id = fields.Many2one(comodel_name="sms_module.course", string="Course", required=False, )
     # endregion
-
-
+    _sql_constraints = [('student_course_enrollment_wizard',
+                         'UNIQUE(student_id,course_id)',
+                         'This Student already exist in this course')]

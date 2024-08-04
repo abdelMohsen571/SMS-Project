@@ -13,6 +13,7 @@ class Course(models.Model):
     syllabus = fields.Char(string="Syllabus", required=False, )
     duration = fields.Integer(string='Duration', required=False, )
     prerequisites = fields.Text(string="Prerequisites", required=False, )
+    course_level = fields.Integer(required=True)
     # endregion
 
     # region  Relational----------------TODO[IMP]: Relational Fields Declaration----------------------
