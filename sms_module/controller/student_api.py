@@ -4,6 +4,19 @@ from urllib.parse import parse_qs
 from odoo import http
 from odoo.http import request
 
+def valid_response(data,status):
+    response_body={
+        'message':'Successful',
+        'data':data
+    }
+    return request.make_json_response(response_body,status=status)
+
+def invalid_response(error,status):
+    response_body={
+        'error':error,
+    }
+    return request.make_json_response(response_body,status=status)
+
 
 class StudentApi(http.Controller):
     # this controller for create student by api (provide api to create student
@@ -22,16 +35,14 @@ class StudentApi(http.Controller):
                 vals)  # create student with vals that get from request
             print(res)
             if res:
-                return request.make_json_response(
-                    {  # response for user to identify them data is created or error happen
+                return valid_response(
+                    data={  # response for user to identify them data is created or error happen
                         "message": "student created succisfuly",
                         'id': res.id,
                         'name': res.name}, status=201)
         except Exception as error:
-            return request.make_json_response(
-                {
-                    'message': error
-                }, status=400
+            return invalid_response(
+                error="ID is Exist", status=400
             )
 
     @http.route(['/v1/student/json'], type="json", auth="none", methods=["POST"], csrf=False)
@@ -64,7 +75,7 @@ class StudentApi(http.Controller):
         vals = json.loads(args)
         try:
             student_id.write(vals)  # Update user with vals which send in request
-            return request.make_json_response({
+            return valid_response(data={
                 "message": "student Updated successfully",
                 'id': student_id.id,
                 'name': student_id.name}, status=201)
@@ -85,7 +96,7 @@ class StudentApi(http.Controller):
                         'error': "Student not found",
                     }, status=400
                 )
-            return request.make_json_response({
+            return valid_response(data={
                 'id': student_id.id,
                 'name': student_id.name,
                 'student_level': student_id.student_level,
@@ -94,10 +105,9 @@ class StudentApi(http.Controller):
 
             }, status=200)
         except Exception as error:
-            return request.make_json_response(
-                {
-                    'message': error
-                }, status=400
+            return   invalid_response(
+                error=error, status=400
+
             )
 
 
@@ -118,7 +128,7 @@ class StudentApi(http.Controller):
                         'error': "NO Student Found",
                     }, status=400
                 )
-            return request.make_json_response([{
+            return valid_response([{
                 'id': student_id.id,
                 'name': student_id.name,
                 'student_level': student_id.student_level,
@@ -126,10 +136,9 @@ class StudentApi(http.Controller):
                 'contact_details': student_id.contact_details,
             }for student_id in student_ids], status=200)
         except Exception as error:
-            return request.make_json_response(
-                {
-                    'message': error
-                }, status=400
+            return invalid_response(
+                error=error, status=400
+
             )
 
 
@@ -152,8 +161,7 @@ def delete_student(self, student_id):
                 'name': student_id.name,
             }, status=200)
     except Exception as error:
-        return request.make_json_response(
-            {
-                'message': error
-            }, status=400
+        return invalid_response(
+            error=error, status=400
+
         )
